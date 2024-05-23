@@ -1,0 +1,271 @@
+/* ******* Edit ******** */
+header{
+	display: block;
+	margin: 0px;
+}
+.div__edition{
+    width: 100%;
+    height: 58px;
+    background-color: black;
+    color: aliceblue;
+    display: flex;
+    align-items: center; 
+    justify-content: center; 
+    gap: 5px;
+}
+
+.div__header{
+        display: flex;
+        justify-content: space-between;
+        margin: 50px 0;
+}
+
+.h2modif {
+    display: flex;
+    align-items: center; 
+    justify-content: center;
+    margin-bottom: 9px;  
+}
+
+h2{
+    margin-left:10% ;
+}
+
+.btn__modif{
+    background-color: #fff;
+    border: none;
+    margin-bottom: -45px;
+    cursor: pointer;
+}
+
+.i__modif{
+    margin-right: 10px;
+    font-family: Work Sans;
+}
+
+/* modal */
+
+.overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5); /* Fond sombre pour l'ombrage */
+    z-index: 9999; /* Au-dessus de tout le contenu */
+}
+
+.popup {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 620px;
+    height: 630px;
+    background-color: white;
+    z-index: 10000; /* Au-dessus de l'ombrage */
+    padding: 50px 70px;
+    box-sizing: border-box;
+    border-radius: 10px;
+	text-align: center;
+}
+
+.close-btn {
+    position: absolute;
+    top: 20px;
+    right: 20px;
+    cursor: pointer;
+	font-size: 24px;
+}
+
+.tittle__popUp{
+	text-align: center;
+	padding: 0px;
+	margin: 0px;
+	font-size: 26px;
+	color: black;
+	margin-bottom: 35px;
+	margin-top: 10px
+}
+
+.travail__popup{
+	display: inline;
+}
+
+
+/* CSS */
+.travail__popup {
+    position: relative;
+    display: inline-block;
+    margin: 10px;
+}
+
+.travail__popup img {
+	height: 100px;
+	width: 75.6px;
+	object-fit:cover;
+}
+
+.trash__icon {
+    position: absolute;
+    top: 5px;
+    right: 5px;
+    color: rgb(255, 255, 255);
+    cursor: pointer;
+	background-color: black;
+	padding: 5px 5px 7px 5px;
+	border-radius: 4px;
+}
+
+.arrowLeft__icon {
+    position: absolute;
+	font-size: 24px;
+    top: 14px;
+    left: 14px;
+    color: rgb(0, 0, 0);
+    cursor: pointer;
+	padding: 5px 5px 7px 5px;
+	border-radius: 4px;
+}
+
+
+.ligne {
+	width: 100%;
+    height: 0.5px;
+    background-color: #B3B3B3;
+	margin-top: 35px;
+	margin-bottom: 33px;
+}
+
+.popUpDiv{
+	display: flex;
+	flex-wrap: wrap;
+	overflow-y: auto; 
+	height: 370px;
+}
+
+.button--popup{
+	font-size: 14px;
+	padding: 10px 60px;
+}
+
+#drop-area{
+	width: 100%;
+	height: 169px;
+	background-color:  #E8F1F6;
+	margin-bottom: 30px;
+}
+
+.imageIcon{
+	margin-bottom: 6px;
+	font-size: 76px;
+	color: #B9C5CC;
+}
+
+#input-image{
+	display: none;
+}
+
+
+#upload-image {
+	height: 36px;
+	width: 173px;
+	background-color: #CBD6DC;
+	border: none;
+	color: #306685;
+	margin-bottom: 7px;
+}
+
+#p__Image{
+	font-size: 10px;
+}
+
+#preview-image {
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	justify-content: center;
+	height: 100%;
+}
+
+#preview-image > img {
+	height: 100%;
+}
+
+.div__Title{
+	display: flex;
+	flex-direction: column;
+}
+
+.div__Title > input::placeholder {
+	font-weight: bold;
+	color: red;
+}
+
+.div__Title > input , select {
+    width: 93%;
+    height: 51px;
+    border: none;
+    box-shadow: 0px 4px 14px 0px #00000017;
+    margin-bottom: 30px;
+	font-size: 16px;
+	padding-left: 30px;
+}
+
+select {
+	width: 100%;
+	appearance: none;
+	-webkit-appearance: none;
+	-moz-appearance: none;
+}
+
+.div__Title > img {
+	position: absolute;
+	margin-top: 145px;
+	right: 90px;
+	height: 10px;
+}
+
+.div__Title > label {
+    margin-bottom: 7px;
+}
+
+.reversArrow{
+	transform: scaleY(-1);
+}
+
+.add{
+	margin-left: 0px;
+	width: 100%;
+	margin-top: 5px;
+	margin-bottom: 25px;
+}
+
+.buttonSubmit{
+	padding: 10px 70px;
+}
+
+.div__success {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background-color: rgba(0, 128, 0, 0.8);
+    color: white;
+    padding: 20px;
+    border-radius: 10px;
+    text-align: center;
+    font-size: 1.2em;
+    opacity: 0;
+    visibility: hidden;
+    transition: opacity 0.5s ease-in-out, visibility 0.5s ease-in-out;
+}
+
+.div__success.show {
+    opacity: 1;
+    visibility: visible;
+}
+
+.div__success--delet{
+	background-color: red;
+}
