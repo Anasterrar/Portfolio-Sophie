@@ -1,7 +1,7 @@
 // Définir la liste des travaux en tant que variable globale
 let travaux = [];
 
-// Fonction asynchrone pour récupérer les travaux via l'API
+// Fonction asynchrone pour récupérer ls travaux via l'API
 async function fetchAndGenerateWorks() {
     try {
         const reponse = await fetch('http://localhost:5678/api/works');

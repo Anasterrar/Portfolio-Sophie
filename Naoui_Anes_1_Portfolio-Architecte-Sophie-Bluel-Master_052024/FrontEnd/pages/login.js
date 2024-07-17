@@ -23,17 +23,17 @@ document.addEventListener('DOMContentLoaded', () => {
             });
     
             if (response.ok) {
-                // Si la connexion réussit, récupérez le token JWT de la réponse
+                // Si la connxion réussit, récupérez le token JWT de la réponse
                 const jsonResponse = await response.json();
                 const token = jsonResponse.token;
     
-                // Stockez le token JWT dans le stockage local
+                // Stocke le token JWT dans le stockage local
                 localStorage.setItem('token', token);
     
-                // Redirigez vers la page d'édition
+                // Redirige vers la page d'édition
                 window.location.href = './edit.html';
             } else {
-                // Si la connexion échoue, affiche un message d'erreur "E-mail ou mot de passe incorrect"
+                // Si la connexion échoue, affiche un mesage d'erreur
                 const divError = document.getElementById("div__error__message")
                 const errorMessageHtml = document.createElement("p");
                 divError.innerHTML=""
@@ -49,8 +49,6 @@ document.addEventListener('DOMContentLoaded', () => {
             console.error('Erreur lors de la connexion :', error);
         }
     };
-
-    // Ajout de l'événement de clic
     submitButton.addEventListener('click', handleClickOrEnter);
 
     // Ajout de l'événement de pression de touche Entrée

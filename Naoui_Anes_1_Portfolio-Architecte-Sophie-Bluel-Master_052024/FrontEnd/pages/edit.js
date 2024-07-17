@@ -20,7 +20,7 @@ async function fetchAndGenerateWorks() {
         console.error('Erreur lors de la récupération des travaux :', error);
     }
 }
-// Appelez la fonction pour récupérer les travaux lorsque le chargement de la page est terminé
+// Appele la fonction pour récupérer les travaux lorsque le chargement de la page est terminé
 document.addEventListener('DOMContentLoaded', fetchAndGenerateWorks);
 
 // Ouvrir la modal
@@ -53,7 +53,7 @@ function showWorksPopup() {
     // Ajout de la popup à la page
     document.body.appendChild(popup);
 
-    // Générer les travaux dans la popup
+    // Génére les travaux dans la popup
     genererTravauxDansPopup(travaux);
     popup.appendChild(lignePopUp);
     popup.appendChild(buttonPopUp);
@@ -77,7 +77,7 @@ function showWorksPopup() {
         showWorksPopup()
     });
 }
-// Ajouter un événement pour afficher les travaux dans la popup
+// Ajoute un événement pour afficher les travaux dans la popup
 const buttonModifier = document.querySelector('.btn__modif');
 buttonModifier.addEventListener('click', showWorksPopup);
 
@@ -104,10 +104,10 @@ trashIcon.classList.add("fa-solid", "fa-trash-can", "trash__icon");
 // Ajout d'un écouteur d'événements pour la suppression du travail associé
 trashIcon.addEventListener('click', async () => {
 
-// Récupérer l'identifiant unique du travail à supprimer
+// Récupére l'identifiant unique du travail à supprimer
 const id = travail.id;
         
-// Supprimer le travail avec l'identifiant spécifié
+// Supprime le travail avec l'identifiant spécifié
 travaux = travaux.filter(work => work.id !== id);
         
 // Mettre à jour l'affichage
@@ -125,8 +125,7 @@ travaux = travaux.filter(work => work.id !== id);
             popup.appendChild(buttonPopUp);
 
 
-            
-        // Afficher un message de succès
+        // Affiche un message de succès
         const divSuccesUpload = document.createElement('div');
         divSuccesUpload.classList.add("div__success", "div__success--delet");
         const pSucces = document.createElement('p');
@@ -135,23 +134,23 @@ travaux = travaux.filter(work => work.id !== id);
      
         popUpDiv.appendChild(divSuccesUpload);
 
-        // Afficher le message de succès et le faire disparaître après 2 secondes
+        // Affiche le message de succès et le faire disparaître après 2 secondes
         setTimeout(() => {
             divSuccesUpload.classList.add('show');
-        }, 100); // Petit délai pour permettre le rendu initial
+        }, 100);
 
         setTimeout(() => {
             divSuccesUpload.classList.remove('show');
             setTimeout(() => {
                 divSuccesUpload.remove();
-            }, 500); // Attendre la fin de la transition avant de supprimer l'élément
-        }, 2100); // 2 secondes plus le délai initial
+            }, 500);
+        }, 2100);
         });
 
         // Création de la balise img pour afficher l'image
         const imageElement = document.createElement("img");
         imageElement.src = travail.imageUrl;
-        // Définir la hauteur de l'image à 30px
+        // Définit la hauteur de l'image à 30px
         travailElement.appendChild(trashIcon);
         travailElement.appendChild(imageElement);
 
@@ -161,15 +160,13 @@ travaux = travaux.filter(work => work.id !== id);
 }
 
 async function supprimerTravailDansAPI(id) {
-    // Récupérer le token JWT stocké côté client
+    // Récupére le token JWT stocké côté client
     const token = localStorage.getItem('token'); // ou récupérez le token d'un cookie sécurisé
     
-    // Vérifier si le token JWT est présent
+    // Vérifie si le token JWT est présent
     if (!token) {
         console.error('Token JWT non trouvé. Redirection vers la page de connexion.');
-        // Rediriger l'utilisateur vers la page de connexion
-        // window.location.href = './login.html';
-        return; // Arrêter l'exécution de la fonction
+        return;
     }
     // Configuration de la requête avec le token JWT dans l'en-tête
     const requestOptions = {
@@ -187,16 +184,15 @@ async function supprimerTravailDansAPI(id) {
         console.log('Le travail a été supprimé avec succès dans l\'API');
     } catch (error) {
         console.error('Erreur:', error);
-        // Gérer l'erreur, par exemple afficher un message à l'utilisateur
     }
 }
 
 // Fonction pour supprimer un travail dans la modale et mettre à jour l'affichage
 async function supprimerTravailDansModal(id) {
-    // Supprimer le travail avec l'identifiant spécifié
+    // Supprime le travail avec l'identifiant spécifié
     travaux = travaux.filter(work => work.id !== id);
     
-    // Mettre à jour l'affichage dans la modale
+    // Met à jour l'affichage dans la modale
     popUpDiv.innerHTML = "";
     genererTravauxDansPopup(travaux);
 
@@ -264,7 +260,7 @@ divTitle.appendChild(arrowSelect)
 
 
 select.addEventListener('click', (event) => {
-    // Empêchez le comportement par défaut du bouton
+    // Empêche le comportement par défaut du bouton
     event.preventDefault();
 
     // Vérifie si la classe "reversArrow" est présente
@@ -281,7 +277,7 @@ select.addEventListener('click', (event) => {
 const options = ["Objets", "Appartements", "Hotels & restaurants"];
 options.forEach((option, index) => {
     const optionElement = document.createElement("option");
-    optionElement.value = index + 1; // La valeur de l'option est l'index + 1
+    optionElement.value = index + 1;
     optionElement.textContent = option;
     select.appendChild(optionElement);
 });
@@ -327,15 +323,13 @@ options.forEach((option, index) => {
     inputImage.addEventListener("change", previewImageA);
     
 
-// Ajoutez un gestionnaire d'événements pour l'événement click
+// Ajoute un gestionnaire d'événements pour l'événement click
 buttonImage.addEventListener('click', (event) => {
     event.preventDefault();
     inputImage.click();
 });
 
-
-
-// Ajoutez un gestionnaire d'événements pour l'événement click sur le bouton de soumission
+// Ajoute un gestionnaire d'événements pour l'événement click sur le bouton de soumission
 buttonSubmit.addEventListener('click', async (event) => {
     event.preventDefault();
     try {
@@ -354,30 +348,28 @@ buttonSubmit.addEventListener('click', async (event) => {
 // Fonction pour ajouter un travail dans l'API et retourner le nouvel élément
 async function ajouterTravailDansAPI() {
     // Récupérer le token JWT stocké côté client
-    const token = localStorage.getItem('token'); // ou récupérer le token d'un cookie sécurisé
+    const token = localStorage.getItem('token');
     
-    // Vérifier si le token JWT est présent
+    // Vérifie si le token JWT est présent
     if (!token) {
         console.error('Token JWT non trouvé. Redirection vers la page de connexion.');
-        // Rediriger l'utilisateur vers la page de connexion
-        // window.location.href = './login.html';
-        return; // Arrêter l'exécution de la fonction
+        return;
     }
     
-    // Récupérer les valeurs des inputs
+    // Récupére les valeurs des inputs
     const file = inputImage.files[0];
     const title = inputTitle.value;
     const category = select.value;
     
-    // Vérifier si le champ de titre est vide
+    // Vérifie si le champ de titre est vide
     if (title.trim() === '') {
-        // Afficher un message d'erreur
+        // Affiche un message d'erreur
         const inputTitle = document.getElementById("title")
         inputTitle.placeholder = "Ajouter un titre";
         return;
     }
     
-    // Créer un objet FormData pour envoyer les données
+    // Crée un objet FormData pour envoyer les données
     const formData = new FormData();
     formData.append('image', file);
     formData.append('title', title);
@@ -400,13 +392,13 @@ async function ajouterTravailDansAPI() {
         const newWork = await response.json();
         console.log('Le travail a été ajouté avec succès dans l\'API');
 
-        // Supprimer les éléments overlay et popup s'ils existent
+        // Supprime les éléments overlay et popup s'ils existent
         const overlay = document.querySelector('.overlay');
         const popup = document.querySelector('.popup');
         if (overlay) overlay.remove();
         if (popup) popup.remove();
 
-        // Afficher un message de succès
+        // Affiche un message de succès
         const divSuccesUpload = document.createElement('div');
         divSuccesUpload.classList.add("div__success");
         const pSucces = document.createElement('p');
@@ -415,22 +407,21 @@ async function ajouterTravailDansAPI() {
         const body = document.querySelector("body");
         body.appendChild(divSuccesUpload);
 
-        // Afficher le message de succès et le faire disparaître après 2 secondes
+        // Affiche le message de succès
         setTimeout(() => {
             divSuccesUpload.classList.add('show');
-        }, 100); // Petit délai pour permettre le rendu initial
+        }, 100);
 
         setTimeout(() => {
             divSuccesUpload.classList.remove('show');
             setTimeout(() => {
                 divSuccesUpload.remove();
-            }, 500); // Attendre la fin de la transition avant de supprimer l'élément
-        }, 2100); // 2 secondes plus le délai initial
+            }, 500);
+        }, 2100);
 
-        return newWork; // Retourner le nouvel élément
+        return newWork;
     } catch (error) {
         console.error('Erreur:', error);
-        // Gérer l'erreur, par exemple afficher un message à l'utilisateur
         return null;
     }
 }
